@@ -12,12 +12,12 @@ let rootState = {
     {
       id: uuidv1(),
       nameTask: "Sleep",
-      status: 1
+      status: 0
     },
     {
       id: uuidv1(),
       nameTask: "Learn",
-      status: 2
+      status: 0
     },
     {
       id: uuidv1(),
@@ -27,44 +27,43 @@ let rootState = {
   ]
 };
 
-const findIndex = (tasks, id) =>{
+const findIndex = (tasks, id) => {
   let result = -1;
-  tasks.forEach(task=> {
-    console.log(task.id);
-    console.log(id);
-    
-    
-    if(task.id === id){
-      result = tasks.id
+  tasks.forEach((task, index) => {
+    if (task.id === id) {
+      console.log(task.id);
+      result = index;
     }
   });
-  
   return result;
 }
 
 export const allTasks = (state = rootState, action) => {
   switch (action.type) {
-    case types.ADD_TASK: 
-    let newTask = {
-      id: uuidv1(),
-      nameTask: action.task,
-      status: 0
-    }
-    let addTask = state.tasks;
-    addTask.push(newTask)
-    return {...state}
+    case types.ADD_TASK:
+      let newTask = {
+        id: uuidv1(),
+        nameTask: action.task,
+        status: 0
+      }
+      let addTask = state.tasks;
+      addTask.push(newTask)
+      return { ...state }
     case types.DELETE_TASK:
-      let delIndex = findIndex(state.tasks,action.id)
+      let delIndex = findIndex(state.tasks, action.id)
       console.log(delIndex);
-      
-      state.tasks.splice(delIndex,1)
-      return {...state}
-      case types.UPDATE_TASK:
-        let updateIndex = findIndex(state.tasks,action.task.id)
-        console.log(state.tasks);
-        console.log(action.task.id);
-        console.log(updateIndex);
-        return {...state} 
-    default: return {...state}
+      state.tasks.splice(delIndex, 1)
+      return { ...state }
+    case types.UPDATE_TASK:
+      let updateIndex = findIndex(state.tasks, action.task.id)
+      if (state.tasks[updateIndex].status < 2) {
+        state.tasks[updateIndex].status++;
+      }
+      // else {
+      //   state.tasks.splice(updateIndex,1)
+      // }
+      console.log(state.tasks[updateIndex].status);
+      return { ...state }
+    default: return { ...state }
   }
 }

@@ -6,7 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Fab from '@material-ui/core/Fab';
 import DeleteIcon from '@material-ui/icons/Delete';
-import EditIcon from '@material-ui/icons/Edit';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import { connect } from 'react-redux';
 import * as actions from '../actions/index';
 
@@ -39,7 +39,7 @@ function TaskItem(props) {
       </CardContent>
       <CardActions>
         <Fab color="secondary" aria-label="edit" size="small" onClick={() => updateTask()}>
-          <EditIcon />
+          <CheckCircleIcon />
         </Fab>
         <Fab color="primary" aria-label="delete" size="small" onClick={() => delTask()}>
           <DeleteIcon />
