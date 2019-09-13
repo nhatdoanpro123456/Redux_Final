@@ -1,0 +1,24 @@
+{
+    "tasks": [
+      {
+        "id": 1,
+        "nameTask": "Read Book",
+        "status": 0
+      },
+      {
+        "id": 2,
+        "nameTask": "Sleep",
+        "status": 0
+      },
+      {
+        "id": 3,
+        "nameTask": "Learn",
+        "status": 0
+      },
+      {
+        "id": 4,
+        "nameTask": "Play Game",
+        "status": 2
+      }
+    ]
+  }

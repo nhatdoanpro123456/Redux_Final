@@ -1,5 +1,5 @@
 import * as types from '../constants/ActionTypes';
-
+import callApi from '../services/callApi';
 const uuidv1 = require('uuid/v1');
 
 let rootState = {
@@ -26,6 +26,15 @@ let rootState = {
     },
   ]
 };
+
+function Api(){
+  let result = null;
+  callApi('get','http://localhost:4000/tasks',null).then(res =>{
+    console.log(res);
+    
+  })
+  return result;
+}
 
 const findIndex = (tasks, id) => {
   let result = -1;

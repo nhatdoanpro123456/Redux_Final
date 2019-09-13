@@ -16,16 +16,11 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-import Grid from '@material-ui/core/Grid';
-import { STATUSES } from '../constants';
-import TaskList from '../components/TaskList';
-import TaskForm from '../components/TaskForm';
+import ListAltIcon from '@material-ui/icons/ListAlt';
+import HomeIcon from '@material-ui/icons/Home';
 import TaskBoard from './TaskBoard';
-import Login from './Login';
 import Home from './Home';
-// import TaskList from '../components/TaskList';
+import { callAPI } from '../services/callApi';
 
 const drawerWidth = 240;
 
@@ -105,6 +100,7 @@ function Main(props) {
     setOpen(false);
   }
 
+
   return (
     <Router>
       <div className={classes.root}>
@@ -128,7 +124,7 @@ function Main(props) {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" noWrap>
-              Mini variant drawer
+              Demo Project
           </Typography>
           </Toolbar>
         </AppBar>
@@ -155,13 +151,13 @@ function Main(props) {
           <List>
             <NavLink to="/">
               <ListItem button>
-                <ListItemIcon><InboxIcon /></ListItemIcon>
+                <ListItemIcon><HomeIcon /></ListItemIcon>
                 <ListItemText primary='Home' />
               </ListItem>
             </NavLink>
             <NavLink to="/taskboard">
               <ListItem button>
-                <ListItemIcon><MailIcon /></ListItemIcon>
+                <ListItemIcon><ListAltIcon /></ListItemIcon>
                 <ListItemText primary='Task Board' />
               </ListItem>
             </NavLink>

@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import { STATUSES } from '../constants';
 import TaskList from '../components/TaskList';
 import TaskForm from '../components/TaskForm';
@@ -30,28 +30,6 @@ const useStyles = makeStyles((theme: Theme) =>
 
 function TaskBoard(props) {
   const classes = useStyles();
-// const tasks = [
-//   {
-//     id: 1,
-//     nameTask: "Read Book",
-//     status: 0
-//   },
-//   {
-//     id: 2,
-//     nameTask: "Sleep",
-//     status: 1
-//   },
-//   {
-//     id: 1,
-//     nameTask: "Learn",
-//     status: 2
-//   },
-//   {
-//     id: 1,
-//     nameTask: "Play Game",
-//     status: 2
-//   },
-// ]
   function showTaskBoard() {
     const tasks = props.getTasks.tasks;
     console.log(tasks);
@@ -61,40 +39,35 @@ function TaskBoard(props) {
         {STATUSES.map((status, index) => {
           const taskFilter = tasks.filter(task => task.status === status.value);
           return (
-            <TaskList tasks={taskFilter} status = {status}/>
+            <TaskList tasks={taskFilter} status={status} />
           )
         })}
-
       </Grid>
-
     )
     return result;
   }
-
   function showForm() {
     let result = props.showForm
     return result;
   }
   function dialogOn() {
     return (
-      <TaskForm open = {props.dialogOn} onClose={showForm()}/>
+      <TaskForm open={props.dialogOn} onClose={showForm()} />
     )
   }
-  console.log(props.dialogOn);
-  
   return (
     <main className={classes.content}>
-        <div className={classes.toolbar} />
-        <Button className={classes.button} variant="contained" color="primary" onClick={showForm()} >
-          <AddIcon /> Add new task
+      <div className={classes.toolbar} />
+      <Button className={classes.button} variant="contained" color="primary" onClick={showForm()} >
+        <AddIcon /> Add new task
          </Button>
-        {showTaskBoard()}
-        {dialogOn()}
-      </main>
+      {showTaskBoard()}
+      {dialogOn()}
+    </main>
   );
 }
 
-const mapStateToProps = function(state) {
+const mapStateToProps = function (state) {
   return {
     dialogOn: state.showDialog,
     getTasks: state.allTasks
@@ -102,7 +75,7 @@ const mapStateToProps = function(state) {
 }
 
 const mapDispatchToProps = {
-   showForm: actions.showDialog,
+  showForm: actions.showDialog,
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(TaskBoard);
+export default connect(mapStateToProps, mapDispatchToProps)(TaskBoard);
